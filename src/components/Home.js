@@ -3,12 +3,14 @@ import styled from 'styled-components';
 
 import storeItems from '../data/storeItems.json';
 
+import Header from './Header';
 import Product from './Product';
 import Footer from './Footer';
 
 export default function Home() {
   return (
     <Fragment>
+      <Header />
       {storeItems.categories.map((category) => (
         <Fragment key={category.storeId}>
           <CategoryName>{category.title}</CategoryName>
