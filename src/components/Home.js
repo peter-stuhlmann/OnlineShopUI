@@ -1,51 +1,37 @@
-import React, { Fragment } from 'react';
-import styled from 'styled-components';
+import React, { Fragment, useState } from 'react';
 
 import storeItems from '../data/storeItems.json';
 
 import Header from './Header';
-import Product from './Product';
 import Footer from './Footer';
+import Navigation from './Navigation';
+import Category from './Category';
 
 export default function Home() {
+  const [isActive, setIsActive] = useState(null);
+
+  const [anchor, setAnchor] = useState(0);
+
   return (
     <Fragment>
       <Header />
-      {storeItems.categories.map((category) => (
-        <Fragment key={category.storeId}>
-          <CategoryName>{category.title}</CategoryName>
-          <ProductList>
-            {storeItems.storeItems
-              .filter(
-                (storeItem) =>
-                  storeItem.metadata.category === category.internalName
-              )
-              .map((storeItem) => (
-                <Product product={storeItem} />
-              ))}
-          </ProductList>
-        </Fragment>
+      <Navigation
+        categories={storeItems.categories}
+        isActive={isActive}
+        setIsActive={setIsActive}
+      />
+      {storeItems.categories.map((category, i) => (
+        <Category
+          key={category.storeId}
+          category={category}
+          storeItems={storeItems}
+          anchor={anchor}
+          setAnchor={setAnchor}
+          isActive={isActive}
+          index={i}
+        />
       ))}
       <Footer />
     </Fragment>
   );
 }
-
-const CategoryName = styled.h2`
-  color: #00ae9a;
-  text-align: center;
-  width: 100%;
-  max-width: 1350px;
-  margin: 35px auto 20px auto;
-  font-size: 30px;
-`;
-
-const ProductList = styled.ul`
-  padding: 0;
-  width: 100%;
-  max-width: 1350px;
-  margin: 0 auto;
-  list-style-type: none;
-  display: flex;
-  flex-flow: row wrap;
-`;

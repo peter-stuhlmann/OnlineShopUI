@@ -7,7 +7,7 @@ export default function Product(props) {
   const currency = product.currency === 'USD' ? '$' : product.currency;
 
   return (
-    <Container key={product.storeId}>
+    <Container>
       <Image src={product.image_url} alt={product.title} />
       <Content>
         <Text>

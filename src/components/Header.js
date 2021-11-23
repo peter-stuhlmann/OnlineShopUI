@@ -18,6 +18,8 @@ const Container = styled.header`
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px;
   background-color: #fff;
   padding: 10px 5px;
+  position: sticky;
+  top: 0;
 
   span {
     &:first-child {
