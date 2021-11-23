@@ -22,6 +22,21 @@ export default function Home() {
   ));
 }
 
-const CategoryName = styled.h2``;
+const CategoryName = styled.h2`
+  color: #00ae9a;
+  text-align: center;
+  width: 100%;
+  max-width: 1350px;
+  margin: 35px auto 20px auto;
+  font-size: 30px;
+`;
 
-const ProductList = styled.ul``;
+const ProductList = styled.ul`
+  padding: 0;
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  list-style-type: none;
+  display: flex;
+  flex-flow: row wrap;
+`;
