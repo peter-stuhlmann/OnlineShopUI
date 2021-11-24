@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react';
 import storeItems from '../data/storeItems.json';
 
 import Header from './Header';
+import Banner from './Banner';
 import Footer from './Footer';
 import Navigation from './Navigation';
 import Category from './Category';
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <Fragment>
       <Header />
+      <Banner image={storeItems.banner} />
       <Navigation
         categories={storeItems.categories}
         isActive={isActive}
