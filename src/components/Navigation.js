@@ -24,6 +24,7 @@ const Container = styled.nav`
   position: sticky;
   top: 56px;
   background-color: #f7f7f7;
+  overflow-x: auto;
 `;
 
 const List = styled.ul`
