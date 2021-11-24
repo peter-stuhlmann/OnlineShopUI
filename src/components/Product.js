@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
+import useScrollbarSize from 'react-scrollbar-size';
+
 import ProductSettings from './ProductSettings';
 
 export default function Product(props) {
@@ -12,6 +14,16 @@ export default function Product(props) {
   const handleProductClick = () => {
     setSettingsBoxOpen(true);
   };
+
+  const { width } = useScrollbarSize();
+
+  if (settingsBoxOpen) {
+    document.body.style.overflow = 'hidden';
+    document.body.style.marginRight = width + 'px';
+  } else {
+    document.body.style.overflow = 'auto';
+    document.body.style.marginRight = 0;
+  }
 
   return (
     <Fragment>

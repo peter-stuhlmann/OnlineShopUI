@@ -67,12 +67,12 @@ const Container = styled.div`
   width: 60%;
   max-width: 700px;
   background-color: rgb(249, 249, 249);
-  height: calc(100vh - 56.67px - 46px);
+  height: calc(100vh - 46px);
   position: fixed;
   bottom: 46px;
   right: ${(props) => (props.open ? '0' : '-60%')};
   transition: 0.2s ease-in-out;
-  padding: 20px;
+  padding: 76.67px 20px 20px 20px;
   box-sizing: border-box;
   overflow-y: auto;
   z-index: 2;
@@ -87,7 +87,7 @@ const Container = styled.div`
 const CloseButton = styled.svg`
   height: 30px;
   position: absolute;
-  top: 20px;
+  top: 76.67px;
   right: 20px;
   cursor: pointer;
   fill: #6c6c6c;
