@@ -9,14 +9,13 @@ export default function Product(props) {
 
   const [settingsBoxOpen, setSettingsBoxOpen] = useState(false);
 
-  const handleProductClick = (product) => {
-    console.log('Product ' + product.title + ' clicked');
+  const handleProductClick = () => {
     setSettingsBoxOpen(true);
   };
 
   return (
     <Fragment>
-      <Container onClick={() => handleProductClick(product)}>
+      <Container onClick={() => handleProductClick()}>
         <Image src={product.image_url} alt={product.title} />
         <Content>
           <Text>
@@ -47,6 +46,7 @@ const Container = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
 
   &:hover {
     border: 5px solid #00ae9a;
