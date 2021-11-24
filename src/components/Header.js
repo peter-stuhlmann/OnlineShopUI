@@ -20,6 +20,7 @@ const Container = styled.header`
   padding: 10px 5px;
   position: sticky;
   top: 0;
+  z-index: 10;
 
   span {
     &:first-child {

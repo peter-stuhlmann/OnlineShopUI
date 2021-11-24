@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
+import ProductSettings from './ProductSettings';
 
 export default function Product(props) {
   const { product } = props;
 
   const currency = product.currency === 'USD' ? '$' : product.currency;
 
+  const [settingsBoxOpen, setSettingsBoxOpen] = useState(false);
+
+  const handleProductClick = (product) => {
+    console.log('Product ' + product.title + ' clicked');
+    setSettingsBoxOpen(true);
+  };
+
   return (
-    <Container>
-      <Image src={product.image_url} alt={product.title} />
-      <Content>
-        <Text>
-          <Title>{product.title}</Title>
-          <Description>{product.subtitle}</Description>
-        </Text>
-        <Price>
-          {currency}
-          {product.price}
-        </Price>
-      </Content>
-    </Container>
+    <Fragment>
+      <Container onClick={() => handleProductClick(product)}>
+        <Image src={product.image_url} alt={product.title} />
+        <Content>
+          <Text>
+            <Title>{product.title}</Title>
+            <Description>{product.subtitle}</Description>
+          </Text>
+          <Price>
+            {currency}
+            {product.price}
+          </Price>
+        </Content>
+      </Container>
+      <ProductSettings
+        product={product}
+        open={settingsBoxOpen}
+        setOpen={setSettingsBoxOpen}
+      />
+    </Fragment>
   );
 }
 
