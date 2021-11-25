@@ -28,7 +28,7 @@ export default function Product(props) {
   return (
     <Fragment>
       <Container onClick={() => handleProductClick()}>
-        <Image src={product.image_url} alt={product.title} />
+        <Image src={product.image_url} alt={product.title} loading="lazy" />
         <Content>
           <Text>
             <Title>{product.title}</Title>

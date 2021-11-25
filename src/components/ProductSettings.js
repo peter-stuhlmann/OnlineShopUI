@@ -1,6 +1,7 @@
 import React, { Fragment, useRef } from 'react';
 import styled from 'styled-components';
 
+import Accordion from './Accordion';
 import useOnClickOutside from '../hooks/useOnClickOutside';
 
 export default function ProductSettings(props) {
@@ -29,7 +30,18 @@ export default function ProductSettings(props) {
           </g>
         </CloseButton>
         <Title>{product.title}</Title>
-        <Image src={product.image_url} alt={product.title} />
+        <Image src={product.image_url} alt={product.title} loading="lazy" />
+        <Description>{product.subtitle}</Description>
+        {product.toppings.map((tab, i) => (
+          <Accordion key={tab.title + i} tab={tab} />
+        ))}
+
+        <Heading>Special Requests</Heading>
+        <Description small>
+          Changes in this section that require price adjustments cannot be
+          honored
+        </Description>
+        <Input type="text" placeholder="Item notes..." />
         <FooterBar open={open}>
           <Back onClick={() => handleCloseButtonClick()}>Back</Back>
         </FooterBar>
@@ -72,7 +84,7 @@ const Container = styled.div`
   bottom: 46px;
   right: ${(props) => (props.open ? '0' : '-60%')};
   transition: 0.2s ease-in-out;
-  padding: 76.67px 20px 20px 20px;
+  padding: 76.67px 20px 50px 20px;
   box-sizing: border-box;
   overflow-y: auto;
   z-index: 2;
@@ -104,6 +116,33 @@ const Title = styled.div`
 
 const Image = styled.img`
   width: 100%;
+`;
+
+const Heading = styled.h3`
+  font-weight: normal;
+  margin: 30px 0 0 0;
+`;
+
+const Description = styled.p`
+  font-size: ${(props) => (props.small ? '11.5px' : '14px')};
+  color: #363636;
+  letter-spacing: 0.2px;
+  margin: 15px 0;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  height: 35px;
+  padding: 0px 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid lightgrey;
+
+  &::placeholder {
+    color: lightgrey;
+    opacity: 1;
+  }
 `;
 
 const FooterBar = styled.div`
